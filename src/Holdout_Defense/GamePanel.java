@@ -24,7 +24,11 @@ public class GamePanel extends JPanel implements Runnable {
         Graphics2D g2d = (Graphics2D) g;
         g2d.setColor(Color.BLACK);
         g2d.fillRect(0, 0, WIDTH, HEIGHT);
-        menu.draw(g2d);
+        if(GameStatus.isMenu)
+            menu.draw(g2d);
+        else if(GameStatus.isActive) {
+            // Draw game
+        }
     }
     public void update() {
 
