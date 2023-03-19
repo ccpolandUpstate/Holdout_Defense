@@ -12,6 +12,8 @@ public class GamePanel extends JPanel implements Runnable {
     Thread gameThread;
 
     Menu menu = new Menu(this);
+    GameScene gameScene = new GameScene(this);
+
     public GamePanel() {
         setPreferredSize(gameSize);
         this.setFocusable(true);
@@ -27,11 +29,15 @@ public class GamePanel extends JPanel implements Runnable {
         if(GameStatus.isMenu)
             menu.draw(g2d);
         else if(GameStatus.isActive) {
-            // Draw game
+            gameScene.draw(g2d);
         }
     }
     public void update() {
-
+        if(GameStatus.isMenu)
+            menu.update();
+        else if(GameStatus.isActive) {
+            gameScene.update();
+        }
     }
     public void run() {
         long lastTime = System.nanoTime();
