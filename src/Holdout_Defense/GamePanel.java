@@ -1,5 +1,7 @@
 package Holdout_Defense;
 
+import Holdout_Defense.common.Entities.TheHoldout;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -13,6 +15,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     Menu menu = new Menu(this);
     GameScene gameScene = new GameScene(this);
+    TheHoldout TheHoldout = new TheHoldout(this);
 
     public GamePanel() {
         setPreferredSize(gameSize);
@@ -30,6 +33,7 @@ public class GamePanel extends JPanel implements Runnable {
             menu.draw(g2d);
         else if(GameStatus.isActive) {
             gameScene.draw(g2d);
+            TheHoldout.draw(g2d);
         }
     }
     public void update() {
@@ -37,6 +41,7 @@ public class GamePanel extends JPanel implements Runnable {
             menu.update();
         else if(GameStatus.isActive) {
             gameScene.update();
+            TheHoldout.update();
         }
     }
     public void run() {
